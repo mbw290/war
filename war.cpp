@@ -12,13 +12,10 @@ public:
   {
     return(value == c1.value)?true:false;
   }
-<<<<<<< HEAD
-=======
   
   bool Card operator >(Card c1)
   {
     return(value > c1.value)?true:false;
->>>>>>> 16ddd23ef3c77ee88afcac45353197316d8612d8
   }
 };
 
