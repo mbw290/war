@@ -13,7 +13,8 @@ public:
 class Deck
 {
 public:
-  Cards wDeck[52];
+  int wDeck[52];
+  int shuffledDeck[52];
 //Populate the deck with cards
   void fillDeck()
   {
@@ -23,7 +24,7 @@ public:
   {
       for (int j=1;j<5;j++)
       {
-        wDeck[i].value=cardnum;
+        wDeck[i]=cardnum;
         i++;
       }
     cardnum++;
@@ -34,22 +35,21 @@ public:
   {
     for(int i=0; i<52; i++)
     {
-      cout << wDeck[i].value << "\n";
+      cout << shuffledDeck[i] << "\n";
     }
   }
 
-  void shuffleDeck()
+void shuffleDeck()
 {
 //srand(time(NULL));
 int shuffleNum[52];
-Cards shuffledDeck[52];
-int x,y;
-short randNum=rand() % 52;
+int x=0;
+int y =0;
+int count=0;
 int counter,index;
   while(x < 52)
   {
-    y = 0;
-    shuffleNum[x] = randNum;
+    shuffleNum[x] = rand() % 52;
     while(y < 52)
     {
       if(shuffleNum[y] == shuffleNum[x] && x != y) //If another number is equal to this one.
@@ -68,8 +68,7 @@ int counter,index;
   while (counter<52)
   {
     index=shuffleNum[counter];
-    //shuffledDeck[counter].value=wDeck[index].value;
-    cout << index << "\n";
+    shuffledDeck[counter]=wDeck[index];
     counter++;
   }
 }
@@ -80,7 +79,7 @@ int main()
 {
 Deck nDeck;
 nDeck.fillDeck();
-//nDeck.printDeck();
 nDeck.shuffleDeck();
+nDeck.printDeck();
 return 0;
 }
