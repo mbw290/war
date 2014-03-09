@@ -8,6 +8,11 @@ class Cards
 {
 public:
   int value;
+  bool Card operator ==(Card c1)
+  {
+    return(value == c1.value)?true:false;
+  }
+  }
 };
 
 class Deck
@@ -74,6 +79,9 @@ int counter,index;
 }
 
 };
+
+
+
 
 int main()
 {
