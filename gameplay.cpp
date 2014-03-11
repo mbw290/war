@@ -31,7 +31,7 @@ class LinkedList
    {
      Link *newLink = new Link;
      Hand *nHand = new Hand;
-     newLink->pHand=nHand;
+     newLink->pHand= nHand;
      nHand->value=cValue;
      newLink->Next=First; //makes next null
      First=newLink;
@@ -46,7 +46,7 @@ class LinkedList
      Hand *nHand = new Hand;
      //This pointer called lastItem will start at the first element and go through the list
      lastItem=First;	
-     //Set the parameters of the puppy
+     //Set the parameters of the hand
      newNode->pHand=nHand;
      nHand->value=1;
      //If the first item is null then set it to the new Node
@@ -85,7 +85,7 @@ class LinkedList
        {
   //Since we are going to remove the current link, we must store the next node in a temp variable to reuse
        temp=current->Next; 
-  //Remove the puppt and the link, then move to the next item by setting current back to temp which held the node after the one we deleted
+  //Remove the hand and the link, then move to the next item by setting current back to temp which held the node after the one we deleted
        delete current->pHand;
        delete current;
        current=temp;
@@ -107,11 +107,11 @@ class LinkedList
 };
   int main()
 {
-  LinkedList *LL; 
+  LinkedList LL; 
   int matt=1; 
-  LL->AddCard(matt); 
+  LL.AddCard(matt); 
   int rob=2;
-  LL->AddCard(rob);
-  LL->Display();
+  LL.AddCard(rob);
+  LL.Display();
   return 0;
 }
