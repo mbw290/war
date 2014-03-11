@@ -8,15 +8,6 @@ class Cards
 {
 public:
   int value;
-  bool Card operator ==(Card c1)
-  {
-    return(value == c1.value)?true:false;
-  }
-  
-  bool Card operator >(Card c1)
-  {
-    return(value > c1.value)?true:false;
-  }
 };
 
 class Deck
@@ -24,6 +15,7 @@ class Deck
 public:
   int wDeck[52];
   int shuffledDeck[52];
+  int shuffleNum[52];
 //Populate the deck with cards
   void fillDeck()
   {
@@ -40,7 +32,7 @@ public:
     }
   }
 //Print method for debugging
-  void printDeck()
+ void printDeck()
   {
     for(int i=0; i<52; i++)
     {
@@ -50,20 +42,20 @@ public:
 
 void shuffleDeck()
 {
-//srand(time(NULL));
-int shuffleNum[52];
 int x=0;
 int y =0;
 int count=0;
-int counter,index;
+int counter=0;
+int index;
   while(x < 52)
   {
     shuffleNum[x] = rand() % 52;
+    cout << "RESULT" << shuffleNum[x] << "\n";
     while(y < 52)
     {
       if(shuffleNum[y] == shuffleNum[x] && x != y) //If another number is equal to this one.
       {
-        --x; //Set x back one. 
+         --x; //Set x back one. 
          y = 0; //Reset y;
          break; //Try again.
       }
@@ -72,7 +64,8 @@ int counter,index;
       ++y; //Otherwise, check the next number.
       }
     }
-  ++x; //When we reach here, if --x happened, we are about to re-do a number that was not unique. Otherwise, do the next number.
+  ++x;
+//  cout << "NUMBER:" << shuffleNum[x] << "\n";
   }
   while (counter<52)
   {
@@ -92,6 +85,6 @@ int main()
 Deck nDeck;
 nDeck.fillDeck();
 nDeck.shuffleDeck();
-nDeck.printDeck();
+//nDeck.printDeck();
 return 0;
 }
