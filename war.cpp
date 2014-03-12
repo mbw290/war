@@ -231,7 +231,7 @@ int turn()
     Deck nDeck;
     LinkedList P1;
     LinkedList P2;
-    int winner[8];
+    int p1war1,p1war2,p1war3,p2war1,p2war2,p2war3;
     int x;
     int counter=0;
     nDeck.fillDeck();
@@ -284,31 +284,38 @@ int turn()
 	  }
 	  if (P1Card == P2Card)
 	  {
-          
-	    cout << "Player2 wins this round!";
-
-            P2.RemoveCard();
-	    P2.AddCardEnd(P2Card);
-            P2.AddCardEnd(P1Card);
-            //P1.RemoveCard(); 
-            cout << "Player 2 now has ";
-            P2.Display();
-	 //   cout << "WAR!";
-	  //  if (P1.war() > P2.war())
-	  //  {
-	  //    winner[counter]=P2Card;
-	  //  }
-	  //  if (P2.war() > P1.war())
-	  //  {
-	  //     winner[counter]=P1Card;
-	  //  }
-          //  else
-          //  {
-          //    winner[counter]=P1Card;
-          //    counter++;
-          //    winner[counter]=P2Card;
-          //    counter++;
-          //  }
+            LinkedList War;
+	    cout << "WAR!";
+            p1war1=P1.turn();p1war2=P1.turn();p1war3=P1.turn();
+            p2war1=P2.turn();p2war2=P2.turn();p2war3=P2.turn();
+            if (p1war3 > p2war3)
+	    {
+	      
+              P1.RemoveCard();
+              P1.AddCardEnd(P1Card); 
+	      P1.AddCardEnd(P2Card);
+              P1.AddCardEnd(p1war1);
+              P1.AddCardEnd(p1war2);
+              P1.AddCardEnd(p1war3);
+              P1.AddCardEnd(p2war1);
+              P1.AddCardEnd(p2war2);
+              P1.AddCardEnd(p2war3);
+              P2.RemoveCard();
+	    }
+	    if (p2war3 > p1war3)
+	    {
+	    
+              P2.RemoveCard();
+              P2.AddCardEnd(P2Card); 
+	      P2.AddCardEnd(P1Card);
+              P2.AddCardEnd(p1war1);
+              P2.AddCardEnd(p1war2);
+              P2.AddCardEnd(p1war3);
+              P2.AddCardEnd(p2war1);
+              P2.AddCardEnd(p2war2);
+              P2.AddCardEnd(p2war3);
+              P1.RemoveCard();
+	    }
 	  }
 	} while (x==1);
 	
