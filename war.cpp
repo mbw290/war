@@ -253,6 +253,8 @@ int turn()
   int P1Card, P2Card;//holds the value of the turn
 	do
 	{
+          cout << "Player one's score is "; P1.Display(); cout << "\n";
+          cout << "Player two's score is "; P2.Display(); cout << "\n";
           cout << "\nEnter 1 to play" << endl;
 	  cin >> x;
 	  cout << "P1 card: ";
@@ -274,7 +276,6 @@ int turn()
 	  if (P2Card > P1Card)
 	  {
 	    cout << "Player2 wins this round!";
-
             P2.RemoveCard();
 	    P2.AddCardEnd(P2Card);
             P2.AddCardEnd(P1Card);
@@ -292,6 +293,9 @@ int turn()
 	    {
 	      
               P1.RemoveCard();
+              P1.RemoveCard();
+              P1.RemoveCard();
+              P1.RemoveCard();
               P1.AddCardEnd(P1Card); 
 	      P1.AddCardEnd(P2Card);
               P1.AddCardEnd(p1war1);
@@ -305,6 +309,9 @@ int turn()
 	    if (p2war3 > p1war3)
 	    {
 	    
+	      P2.RemoveCard();
+              P2.RemoveCard();
+              P2.RemoveCard();
               P2.RemoveCard();
               P2.AddCardEnd(P2Card); 
 	      P2.AddCardEnd(P1Card);
