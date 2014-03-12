@@ -3,7 +3,7 @@
 #include <ctime>
 #include <stdio.h>
 using namespace std;
-
+int funcCount = 0;
 class Cards
 {
 public:
@@ -208,6 +208,25 @@ public:
 			current = current->Next;
 		}
 	}
+	int turn()
+	{
+		int val;
+
+		Link *current = First;
+		val = current->pHand->value;
+		cout << val;
+		//current.removeCard(); we need to remove the Card at this point
+		First = First->Next;
+		return val;
+	}
+	int war()
+	{
+		int val1, val2, val3;
+		val1 = turn();
+		val2 = turn();
+		val3 = turn();
+		return turn();
+	}
 };
 
 
@@ -216,6 +235,7 @@ int main()
 	Deck nDeck;
 	LinkedList P1;
 	LinkedList P2;
+	int x;
 	nDeck.fillDeck();
 	nDeck.shuffleDeck();
 	for (int i = 0; i < 52; i++)
@@ -233,5 +253,44 @@ int main()
 	P1.Display();
 	cout << "-----Player2-----" << endl;
 	P2.Display();
+
+	cout << "-------------------------" << endl;
+
+
+		int P1Card, P2Card;//holds the value of the turn
+		do
+		{
+			cout << "\nEnter 1 to play" << endl;
+			cin >> x;
+			cout << "P1 card: ";
+			P1Card = P1.turn();
+			cout << endl << "P2 card : ";
+			P2Card = P2.turn();
+			cout << endl;
+			//these ifs compare the value of the cards turned
+			if (P1Card > P2Card)
+			{
+				cout << "Player1 wins this round!";
+				P1.AddCardEnd(P2Card);
+			}
+			if (P2Card > P1Card)
+			{
+				cout << "Player22 wins this round!";
+				P2.AddCardEnd(P1Card);
+			}
+			if (P1Card == P2Card)
+			{
+				cout << "WAR!";
+				if (P1.war() > P2.war())
+				{
+					//add all cards won
+				}
+				if (P2.war() > P1.war())
+				{
+					//add all cards won
+				}
+			}
+		} while (x==1);
+	
 	return 0;
 }
