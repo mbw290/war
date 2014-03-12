@@ -15,7 +15,6 @@ class Deck
 public:
   int wDeck[52];
   int shuffledDeck[52];
-  int shuffleNum[52];
 //Populate the deck with cards
   void fillDeck()
   {
@@ -44,13 +43,11 @@ void shuffleDeck()
 {
 int x=0;
 int y =0;
-int count=0;
 int counter=0;
-int index;
+int shuffleNum[52];
   while(x < 52)
   {
     shuffleNum[x] = rand() % 52;
-    cout << "RESULT" << shuffleNum[x] << "\n";
     while(y < 52)
     {
       if(shuffleNum[y] == shuffleNum[x] && x != y) //If another number is equal to this one.
@@ -65,12 +62,10 @@ int index;
       }
     }
   ++x;
-//  cout << "NUMBER:" << shuffleNum[x] << "\n";
   }
   while (counter<52)
   {
-    index=shuffleNum[counter];
-    shuffledDeck[counter]=wDeck[index];
+    shuffledDeck[counter]=(shuffleNum[counter]%15);
     counter++;
   }
 }
@@ -85,6 +80,6 @@ int main()
 Deck nDeck;
 nDeck.fillDeck();
 nDeck.shuffleDeck();
-//nDeck.printDeck();
+nDeck.printDeck();
 return 0;
 }
