@@ -185,26 +185,8 @@ public:
     Link *current = First;
       while (current != NULL)
       {
-	/*switch (current->pHand->value)
-	{
-	case 11:
-	cout << "J" << endl;
-	break;
-	case 12:
-	cout << "Q" << endl;
-	break;
-	case 13:
-	cout << "K" << endl;
-	break;
-	case 14:
-	cout << "A" << endl;
-	break;
-      	default: cout << current->pHand->value << endl;
-      */
-       current = current->Next;
-       counter++;
+      AddCard(current->pHand->value);
       }
-      cout << counter << "\n";
    }
 int turn()
   {
@@ -231,7 +213,7 @@ int turn()
     Deck nDeck;
     LinkedList P1;
     LinkedList P2;
-    int p1war1,p1war2,p1war3,p2war1,p2war2,p2war3;
+    LinkedList war;
     int x;
     int counter=0;
     nDeck.fillDeck();
@@ -253,8 +235,8 @@ int turn()
   int P1Card, P2Card;//holds the value of the turn
 	do
 	{
-          cout << "Player one's score is "; P1.Display(); cout << "\n";
-          cout << "Player two's score is "; P2.Display(); cout << "\n";
+          //cout << "Player one's score is "; P1.Display(); cout << "\n";
+          //cout << "Player two's score is "; P2.Display(); cout << "\n";
           cout << "\nEnter 1 to play" << endl;
 	  cin >> x;
 	  cout << "P1 card: ";
@@ -266,6 +248,7 @@ int turn()
   	  if (P1Card > P2Card)
 	  {
 	    cout << "Player1 wins this round!";
+            war.Display();
             P1.RemoveCard();
             P1.AddCardEnd(P1Card);
 	    P1.AddCardEnd(P2Card);
@@ -285,44 +268,22 @@ int turn()
 	  }
 	  if (P1Card == P2Card)
 	  {
-            LinkedList War;
-	    cout << "WAR!";
-            p1war1=P1.turn();p1war2=P1.turn();p1war3=P1.turn();
-            p2war1=P2.turn();p2war2=P2.turn();p2war3=P2.turn();
-            if (p1war3 > p2war3)
-	    {
-	      
-              P1.RemoveCard();
-              P1.RemoveCard();
-              P1.RemoveCard();
-              P1.RemoveCard();
-              P1.AddCardEnd(P1Card); 
-	      P1.AddCardEnd(P2Card);
-              P1.AddCardEnd(p1war1);
-              P1.AddCardEnd(p1war2);
-              P1.AddCardEnd(p1war3);
-              P1.AddCardEnd(p2war1);
-              P1.AddCardEnd(p2war2);
-              P1.AddCardEnd(p2war3);
-              P2.RemoveCard();
-	    }
-	    if (p2war3 > p1war3)
-	    {
-	    
-	      P2.RemoveCard();
-              P2.RemoveCard();
-              P2.RemoveCard();
-              P2.RemoveCard();
-              P2.AddCardEnd(P2Card); 
-	      P2.AddCardEnd(P1Card);
-              P2.AddCardEnd(p1war1);
-              P2.AddCardEnd(p1war2);
-              P2.AddCardEnd(p1war3);
-              P2.AddCardEnd(p2war1);
-              P2.AddCardEnd(p2war2);
-              P2.AddCardEnd(p2war3);
-              P1.RemoveCard();
-	    }
+	    cout << "WAR" << "\n";
+            war.AddCard(P1.turn());
+            war.AddCard(P1.turn());
+            war.AddCard(P1.turn());
+            P1.RemoveCard();
+            P1.RemoveCard();
+            P1.RemoveCard();
+            P1.RemoveCard();
+
+            war.AddCard(P2.turn());
+            war.AddCard(P2.turn());
+            war.AddCard(P2.turn());
+            P2.RemoveCard();
+            P2.RemoveCard();
+            P2.RemoveCard();
+            P2.RemoveCard();
 	  }
 	} while (x==1);
 	
