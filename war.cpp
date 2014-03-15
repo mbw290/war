@@ -181,12 +181,14 @@ public:
 
 	void Display()
 	{
-		int counter = 0;
-		Link *current = First;
-		while (current != NULL)
-		{
-			AddCard(current->pHand->value);
-		}
+        int counter=0;
+        Link *current = First;
+          while (current != NULL)
+          {
+          current = current->Next;
+          counter++;
+          }
+         cout << counter << "\n";
 	}
 	int turn()
 	{
@@ -298,7 +300,7 @@ int main()
 				{
 					for (int i = 0; i < wCount; i++)
 					{
-						P1.AddCard(war.turn());
+						P1.AddCardEnd(war.turn());
 						war.RemoveCard();
 					}
 				}
@@ -306,7 +308,7 @@ int main()
 				{
 					for (int i = 0; i < wCount; i++)
 					{
-						P2.AddCard(war.turn());
+						P2.AddCardEnd(war.turn());
 						war.RemoveCard();
 					}
 				}
