@@ -3,13 +3,13 @@
 #include <ctime>
 #include <stdio.h>
 using namespace std;
-int funcCount = 0;
-class Cards
-{
-public:
-	int value;
-};
+/*COM252 War midterm project
+ * Rob Mancuso, Matthew Wimpelberg
+*/
 
+int funcCount = 0;
+
+//Deck class to hold an array of cards
 class Deck
 {
 public:
@@ -20,6 +20,8 @@ public:
 	{
 		int i = 0;
 		int cardnum = 2;
+		//Start with card 2 and fill 4 of each up to 14 
+		//We will handle printing J Q K A later from 11-14
 		while (i<52)
 		{
 			for (int j = 1; j<5; j++)
@@ -62,9 +64,12 @@ public:
 		while (x < 52)
 		{
 			y = 0;
-			nums[x] = rand() % 52; //Change the 100 to change the range. This currently has a range 1-100.
+                        //Generate a random number in the range of 0-52
+			nums[x] = rand() % 52; 
+                        //Check each number in the array to make sure the current random number isn't in it
 			while (y < 52)
 			{
+				//If another number is equal to this one.
 				if (nums[y] == nums[x] && x != y) //If another number is equal to this one.
 				{
 					--x; //Set x back one. 
@@ -76,9 +81,10 @@ public:
 					++y; //Otherwise, check the next number.
 				}
 			}
-			++x; //When we reach here, if --x happened, we are about to re-do a number that was not unique. Otherwise, do the next number.
+			++x; //When we reach here, if --x happened, we need to start over.
 		}
-		x = 0; //This next bit just outputs the numbers to the console. 
+		x = 0; 
+		//Fill the empty array of shuffled cards with the value of a random array element as the index of the ordered deck
 		while (x < 52)
 		{
 			shuffledDeck[x] = wDeck[nums[x]];
@@ -88,6 +94,7 @@ public:
 	}
 };
 
+//Class to hold each players hand as a linked list
 class Hand
 {
 public:
@@ -111,7 +118,7 @@ public:
 	{
 		First = NULL;
 	}
-
+//Add a card to the beginning of the list
 	void AddCard(int cValue)
 	{
 		Link *newLink = new Link;
@@ -121,7 +128,7 @@ public:
 		newLink->Next = First; //makes next null
 		First = newLink;
 	}
-
+//Add a card at the end or in this case the bottom of the pile so that it's not used by the player in the next hand after a winning one
 	void AddCardEnd(int cValue)
 	{
 		//We setup two pointers to Link objects
@@ -169,7 +176,7 @@ public:
 		{
 			//Since we are going to remove the current link, we must store the next node in a temp variable to reuse
 			temp = current->Next;
-			//Remove the hand and the link, then move to the next item by setting current back to temp which held the node after the one we deleted
+			//Remove the hand and the link, then move to the next item by setting current back to temp which held the node after the one we delet
 			delete current->pHand;
 			delete current;
 			current = temp;
@@ -199,6 +206,7 @@ public:
 		//First = First->Next;
 		return val;
 	}
+	//Deal out three cards from each player if there is a tie aka war
 	int war()
 	{
 		int val1, val2, val3;
@@ -209,17 +217,19 @@ public:
 	}
 };
 
-
 int main()
 {
+//Setup a deck object to hold the shuffled array and two linkedlist for a players hand
 	Deck nDeck;
 	LinkedList P1;
 	LinkedList P2;
 	LinkedList war;
 	int x;
 	int counter = 0;
+//Fill in the deck then shuffle it
 	nDeck.fillDeck();
 	nDeck.shuffleDeck();
+//Deal out the cards to each player from the shuffled deck
 	for (int i = 0; i < 52; i++)
 	{
 		if (i % 2 == 0)
@@ -312,9 +322,10 @@ int main()
 						war.RemoveCard();
 					}
 				}
-			}
+			}	
 		} while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
 	} while (x == 1);
 
 	return 0;
 }
+
