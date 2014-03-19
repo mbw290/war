@@ -231,6 +231,7 @@ int main()
 {
 //Setup a deck object to hold the shuffled array and two linkedlist for a players hand
 	Deck nDeck;
+	int z=0;
 	LinkedList P1;
 	LinkedList P2;
 	int x;
@@ -326,27 +327,28 @@ int main()
 				if (wCard1 > wCard2)
 				{
 				cout << "P1 wins war" << "\n";
-				/*	for (int i =0; i<(wCount/10); i++)
+					for (int i =0; i<(wCount/10); i++)
 					{
 						P1.AddCardEnd(war.turn());
 						war.RemoveCard();
 				
 					}
-		*/				
+					
 				}
 				if (wCard1 < wCard2)
 				{
 				cout << "P2 wins war" << "\n";
-				/*	for (int i = 1; i < wCount; i++)
+					for (int i = 1; i < wCount; i++)
 					{
 						P2.AddCardEnd(war.turn());
 						war.RemoveCard();
 					}	
-				*/
+				
 				}
+			cout << "P1 count: " << p1count << "\n" << "P2 count: " << p2count << "\n";
 		}
 		} while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
-	} while (p1count < 52 && p2count < 52);
+	} while (z<100);
 
 	return 0;
 }
