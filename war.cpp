@@ -186,7 +186,7 @@ public:
 		delete current;
 	}
 
-	void Display()
+	int Display()
 	{
         int counter=0;
         Link *current = First;
@@ -195,7 +195,7 @@ public:
           current = current->Next;
           counter++;
           }
-         cout << counter << "\n";
+         return counter;
 	}
 	int turn()
 	{
@@ -229,6 +229,7 @@ int main()
 //Fill in the deck then shuffle it
 	nDeck.fillDeck();
 	nDeck.shuffleDeck();
+        int p1count,p2count;
 //Deal out the cards to each player from the shuffled deck
 	for (int i = 0; i < 52; i++)
 	{
@@ -248,10 +249,12 @@ int main()
 	int wCount = 0;
 	do
 	{
-		//cout << "Player one's score is "; P1.Display(); cout << "\n";
+		cout <<"count" << p1count << "\n";
+                 p1count= P1.Display();
+                 p2count = P2.Display();
 		//cout << "Player two's score is "; P2.Display(); cout << "\n";
-		cout << "\nEnter 1 to play" << endl;
-		cin >> x;
+		//cout << "\nEnter 1 to play" << endl;
+		//cin >> x;
 		cout << "P1 card: ";
 		P1Card = P1.turn();
 		cout << endl << "P2 card : ";
@@ -267,7 +270,6 @@ int main()
 			P1.AddCardEnd(P2Card);
 			P2.RemoveCard();
 			cout << "Player 1 now has ";
-			P1.Display();
 		}
 		if (P2Card > P1Card)
 		{
@@ -283,48 +285,54 @@ int main()
 		{
 			if (P1Card == P2Card)
 			{
+				wCount=wCount+10;
 				cout << "WAR" << "\n";
 				war.AddCard(P1.turn());
 				war.AddCard(P1.turn());
 				war.AddCard(P1.turn());
 				wCard1 = P1.turn();
 				war.AddCard(wCard1);
-				wCount += 4;
-				P1.RemoveCard();
-				P1.RemoveCard();
-				P1.RemoveCard();
+				war.AddCard(P1Card);
 				P1.RemoveCard();
 
 				war.AddCard(P2.turn());
 				war.AddCard(P2.turn());
 				war.AddCard(P2.turn());
+				war.AddCard(P2Card);
 				wCard2 = P2.turn();
 				war.AddCard(wCard2);
-				wCount += 4;
 				P2.RemoveCard();
-				P2.RemoveCard();
-				P2.RemoveCard();
-				P2.RemoveCard();
-				
+				cout << "P1 drew " << wCard1 << "\n";
+				cout << "P2 drew " << wCard2 << "\n";
+
+				cout << "wcount is " << wCount << "\n";
 				if (wCard1 > wCard2)
 				{
-					for (int i = 0; i < wCount; i++)
+				cout << "P1 wins war" << "\n";
+					for (int i =0; i<(wCount/10); i++)
 					{
 						P1.AddCardEnd(war.turn());
-						war.RemoveCard();
 					}
+
+					for (int j = 0; j < (wCount/10);j++)
+					{
+						P1.RemoveCard();
+					}
+				break;
 				}
 				if (wCard1 < wCard2)
 				{
-					for (int i = 0; i < wCount; i++)
+				cout << "P2 wins war" << "\n";
+					for (int i = 1; i < wCount; i++)
 					{
 						P2.AddCardEnd(war.turn());
-						war.RemoveCard();
 					}
+
+				break;
 				}
 			}	
 		} while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
-	} while (x == 1);
+	} while (p1count<52);
 
 	return 0;
 }
