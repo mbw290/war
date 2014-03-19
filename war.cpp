@@ -293,6 +293,7 @@ int main()
 				wCard1 = P1.turn();
 				war.AddCard(wCard1);
 				war.AddCard(P1Card);
+				P1Card = wCard1;//change RM
 				P1.RemoveCard();
 
 				war.AddCard(P2.turn());
@@ -301,6 +302,7 @@ int main()
 				war.AddCard(P2Card);
 				wCard2 = P2.turn();
 				war.AddCard(wCard2);
+				P2Card = wCard2;//change RM
 				P2.RemoveCard();
 				cout << "P1 drew " << wCard1 << "\n";
 				cout << "P2 drew " << wCard2 << "\n";
