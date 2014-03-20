@@ -1,79 +1,75 @@
+A
+K
+4
+K
+5
+Q
+5
+J
+J
+5
+A
+3
+A
+7
+4
+7
+6
+5
+8
+8
+7
+J
+10
+7
+3
+4
+2
+10
+K
+3
+4
+2
+K
+8
+6
+Q
+9
+6
+8
+9
+2
+9
+Q
+Q
+10
+3
+9
+10
+A
+J
+6
+2
 -----Player1-----
 -----Player2-----
 -------------------------
 PLAYER ONE SCORE IS  0
 PLAYER TWO SCORE IS  0
-P1 card: 10
+P1 card: 6
 P2 card : 2
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  26
-PLAYER TWO SCORE IS  26
-P1 card: 2
-P2 card : 7
+Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  27
+PLAYER TWO SCORE IS  25
+P1 card: 14
+P2 card : 11
+Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  28
+PLAYER TWO SCORE IS  24
+P1 card: 9
+P2 card : 10
 Player2 wins this round!PLAYER ONE SCORE IS  27
 PLAYER TWO SCORE IS  25
-P1 card: 6
-P2 card : 6
-WAR
-1422111010413134WCARD1 IS 13
-WCARD2 IS 4
-P1 wins war
-10P1 count: 26
-P2 count: 26
-PLAYER ONE SCORE IS  26
-PLAYER TWO SCORE IS  26
-P1 card: 9
-P2 card : 5
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  22
-PLAYER TWO SCORE IS  21
-P1 card: 14
-P2 card : 12
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  23
-PLAYER TWO SCORE IS  20
-P1 card: 5
-P2 card : 3
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  24
-PLAYER TWO SCORE IS  19
-P1 card: 8
-P2 card : 9
-Player2 wins this round!PLAYER ONE SCORE IS  25
-PLAYER TWO SCORE IS  18
-P1 card: 8
-P2 card : 12
-Player2 wins this round!PLAYER ONE SCORE IS  24
-PLAYER TWO SCORE IS  19
-P1 card: 5
-P2 card : 7
-Player2 wins this round!PLAYER ONE SCORE IS  23
-PLAYER TWO SCORE IS  20
-P1 card: 13
-P2 card : 11
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  22
-PLAYER TWO SCORE IS  21
-P1 card: 7
-P2 card : 12
-Player2 wins this round!PLAYER ONE SCORE IS  23
-PLAYER TWO SCORE IS  20
 P1 card: 10
-P2 card : 9
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  22
-PLAYER TWO SCORE IS  21
-P1 card: 6
-P2 card : 11
-Player2 wins this round!PLAYER ONE SCORE IS  23
-PLAYER TWO SCORE IS  20
-P1 card: 3
 P2 card : 3
-WAR
-513141413113883WCARD1 IS 8
-WCARD2 IS 3
-P1 wins war
-1113P1 count: 22
-P2 count: 21
-PLAYER ONE SCORE IS  22
-PLAYER TWO SCORE IS  21
+Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  28
+PLAYER TWO SCORE IS  24
 P1 card: 12
-P2 card : 6
-Player1 wins this round!Player 1 now has PLAYER ONE SCORE IS  19
-PLAYER TWO SCORE IS  16
-P1 card: 4
-P2 card : 4
+P2 card : 12
