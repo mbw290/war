@@ -368,7 +368,7 @@ int main()
 	
                  p1count=P1.CountCards();
                  p2count = P2.CountCards();
-	} while (p1count<52 & p2count<52);
+	} while (p1count<52 && p2count<52);
 
 	return 0;
 }
