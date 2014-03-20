@@ -344,7 +344,7 @@ int main()
 					
 					{
 						
-						addme=war.Display();
+						addme=war.turn();
 						cout << "I ADDED " << addme << "\n";
 						P1.AddCardEnd(addme);
 						war.RemoveCard();	
@@ -356,9 +356,9 @@ int main()
 				cout << "P2 wins war" << "\n";
 					while (addme!=0)
 					{
-						addme=war.Display();
+						addme=war.turn();
 						cout << "I ADDED " << addme << "\n";
-						P2.AddCardEnd(addme);
+						P1.AddCardEnd(addme);
 						war.RemoveCard();
 					}	
 				
