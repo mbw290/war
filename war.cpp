@@ -139,23 +139,13 @@ public:
 		lastItem = First;
 		//Set the parameters of the hand
 		newNode->pHand = nHand;
-		nHand->value = 1;
-		//If the first item is null then set it to the new Node
-		if (First == NULL)
+		//Loop through the linked list to find the last element
+		while (lastItem->Next != NULL)
 		{
-			First = newNode;
-			First->Next = NULL;
+			lastItem = lastItem->Next;
 		}
-		else
-		{
-			//Loop through the linked list to find the last element
-			while (lastItem->Next != NULL)
-			{
-				lastItem = lastItem->Next;
-			}
-			//The item after the last item will be our new item
-			lastItem->Next = newNode;
-		}
+		//The item after the last item will be our new item
+		lastItem->Next = newNode;
 	}
 
 
@@ -323,10 +313,7 @@ int main()
 			P2.RemoveCard();
 			war.AddCard(P2.turn());
 			P2.RemoveCard();
-			wCard1=war.turn();
-			war.RemoveCard();
-			wCard2=war.turn();
-			war.RemoveCard();
+			
 			if (wCard1==1 || wCard2==1)
 			{
 			P1.RemoveCard();P2.RemoveCard();
@@ -340,7 +327,7 @@ int main()
 				if (wCard1 > wCard2)
 				{
 				cout << "P1 wins war" << "\n";
-					 while (addme!=0)
+					 while (addme<11)
 					
 					{
 						
@@ -348,19 +335,23 @@ int main()
 						cout << "I ADDED " << addme << "\n";
 						P1.AddCardEnd(addme);
 						war.RemoveCard();	
+						addme++;
 					}
 					
+				war.RemoveList(war);	
 				}
 				if (wCard1 < wCard2)
 				{
 				cout << "P2 wins war" << "\n";
-					while (addme!=0)
+					while (addme<11)
 					{
 						addme=war.turn();
 						cout << "I ADDED " << addme << "\n";
 						P1.AddCardEnd(addme);
 						war.RemoveCard();
-					}	
+						addme++;
+					}
+				war.RemoveList(war);	
 				
 				}
 		}
