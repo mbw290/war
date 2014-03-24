@@ -203,7 +203,6 @@ public:
 		int val;
 		Link *current = First;
 		val = current->pHand->value;
-		cout << val;
 		//First = First->Next;
 		return val;
 	}
@@ -250,8 +249,10 @@ int main()
 		//cin >> x;
 		cout << "P1 card: ";
 		P1Card = P1.turn();
+		cout << P1Card << "\n";
 		cout << endl << "P2 card : ";
 		P2Card = P2.turn();
+		cout << P2Card;
 		cout << endl;
 		//these ifs compare the value of the cards turned
 		if (P1Card == 1 || P2Card==1)
@@ -294,6 +295,8 @@ int main()
 			war.AddCard(P1.turn());
 			P1.RemoveCard();
 
+			wCard1=war.turn();
+
 			war.AddCard(P2Card);
 			P2.RemoveCard();
 			war.AddCard(P2.turn());
@@ -304,17 +307,12 @@ int main()
 			P2.RemoveCard();
 			war.AddCard(P2.turn());
 			P2.RemoveCard();
-			
-			if (wCard1==1 || wCard2==1)
-			{
-			P1.RemoveCard();P2.RemoveCard();
-			break;
-			}
 
+			wCard2=war.turn();
+			
 			int warCount=1;
 			int addme;
 			cout << "WCARD1 IS " << wCard1 << "\n";
-			
 			cout << "WCARD2 IS " << wCard2 << "\n";
 				if (wCard1 > wCard2)
 				{
