@@ -311,22 +311,23 @@ int main()
 			break;
 			}
 
-			int addme=1;
+			int warCount=1;
+			int addme;
 			cout << "WCARD1 IS " << wCard1 << "\n";
 			
 			cout << "WCARD2 IS " << wCard2 << "\n";
 				if (wCard1 > wCard2)
 				{
 				cout << "P1 wins war" << "\n";
-					 while (addme<11)
+					 while (warCount<11)
 					
 					{
 						
 						addme=war.turn();
-						cout << "I ADDED " << addme << "\n";
 						P1.AddCardEnd(addme);
+						cout << "I ADDED " << addme << "\n";
 						war.RemoveCard();	
-						addme++;
+						warCount++;
 					}
 					
 				war.RemoveList(war);	
@@ -334,13 +335,13 @@ int main()
 				if (wCard1 < wCard2)
 				{
 				cout << "P2 wins war" << "\n";
-					while (addme<11)
+					while (warCount<11)
 					{
 						addme=war.turn();
-						cout << "I ADDED " << addme << "\n";
 						P1.AddCardEnd(addme);
+						cout << "I ADDED " << addme << "\n";
 						war.RemoveCard();
-						addme++;
+						warCount++;
 					}
 				war.RemoveList(war);	
 				
