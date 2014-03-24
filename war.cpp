@@ -207,15 +207,6 @@ public:
 		//First = First->Next;
 		return val;
 	}
-	//Deal out three cards from each player if there is a tie aka war
-	int war()
-	{
-		int val1, val2, val3;
-		val1 = turn();
-		val2 = turn();
-		val3 = turn();
-		return turn();
-	}
 };
 
 int main()
