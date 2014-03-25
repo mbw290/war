@@ -8,7 +8,7 @@ using namespace std;
  */
 
 int funcCount = 0;
-
+int test[1];
 //Deck class to hold an array of cards
 class Deck
 {
@@ -175,13 +175,13 @@ public:
 	int Display()
 	{
         Link *current = First;
-        while(current != NULL)
+        while(current->Next != NULL)
         {
             cout <<  current->pHand->value << "\n";
             current=current->Next;
-            return current->pHand->value;
+            
         }
-        return 0;
+        return current->pHand->value;
 	}
     
 	int CountCards()
@@ -239,6 +239,7 @@ int main()
     //Deal out the cards to each player from the shuffled deck
 	for (int i = 0; i < 52; i++)
 	{
+        cout<<nDeck.shuffledDeck[i]<<endl;
 		if (i % 2 == 0)
 		{
 			P1.AddCard(nDeck.shuffledDeck[i]);
@@ -248,6 +249,7 @@ int main()
 			P2.AddCard(nDeck.shuffledDeck[i]);
 		}
 	}
+    
     p1count=P1.CountCards();
     p2count = P2.CountCards();
 	int P1Card, P2Card, wCard1, wCard2;//holds the value of the turn
@@ -256,7 +258,11 @@ int main()
     bool playCont = true;
 	do
 	{
-		cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
+        
+        cout<<"P1: " << P1.Display() << endl;
+        cout<<"P1: " << P2.Display() << endl;
+		
+        cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
         
 		cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
 		//cin >> x;
@@ -268,8 +274,8 @@ int main()
 		cout << P2Card << "\n";
 		cout << endl;
 		//these ifs compare the value of the cards turned
-		if (P1Card==0){cout << "count is " << P1.CountCards(); return 0;}
-		if (P2Card==0){cout << "count is " << P2.CountCards(); return 0;}
+		if (P1Card==0){cout << "count is " << P1.CountCards(); return 1;}
+		if (P2Card==0){cout << "count is " << P2.CountCards(); return 1;}
 		if (P1Card > P2Card)
 		{
 			cout << "Player1 wins this round!";
@@ -290,8 +296,22 @@ int main()
             do
             {
                 cout << "WAR" << "\n";
-                
-                
+                if(P1.CountCards() < 5)
+                {
+                    while(P1.check())
+                    {
+                        wCard1=P1.turn();
+                        war.AddCard(wCard1);
+                    }
+                }
+                if(P2.CountCards() < 5)
+                {
+                    while(P2.check())
+                    {
+                        wCard2=P2.turn();
+                        war.AddCard(wCard2);
+                    }
+                }
                 war.AddCard(P1Card);
                 war.AddCard(P1.turn());
                 war.AddCard(P1.turn());
@@ -327,7 +347,7 @@ int main()
                         P1.AddCardEnd(addme);
                         cout << "I ADDED " << addme << "\n";
                         addCount++;
-                        cout<<P2.CountCards();
+                        cout<<P1.CountCards();
                     }
                 }
 				if (wCard1 < wCard2)
