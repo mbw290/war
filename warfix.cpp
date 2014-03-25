@@ -209,6 +209,15 @@ public:
         delete temp;
         return val; //card goes into play
 	}
+    bool check()
+    {
+        bool yes = true;
+        if(First == NULL)
+        {
+            yes = false;
+        }
+        return yes;
+    }
 };
 
 int main()
@@ -216,7 +225,7 @@ int main()
     //Setup a deck object to hold the shuffled array and two linkedlist for a players hand
 	Link *First= new Link;
 	Link *Current=First;
-        LinkedList war;
+    LinkedList war;
 	Deck nDeck;
 	LinkedList P1;
 	LinkedList P2;
@@ -239,10 +248,12 @@ int main()
 			P2.AddCard(nDeck.shuffledDeck[i]);
 		}
 	}
-	cout << "-----Player1-----" << endl;
-	cout << "-----Player2-----" << endl;
+    p1count=P1.CountCards();
+    p2count = P2.CountCards();
 	int P1Card, P2Card, wCard1, wCard2;//holds the value of the turn
 	int wCount = 0;
+    bool warCheck = false;
+    bool playCont = true;
 	do
 	{
 		cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
@@ -272,12 +283,12 @@ int main()
 			P2.AddCardEnd(P2Card);
 			P2.AddCardEnd(P1Card);
 		}
-
         
-            if (P1Card == P2Card)
-            {
+        
+        if (P1Card == P2Card)
+        {
             do
-                {
+            {
                 cout << "WAR" << "\n";
                 
                 
@@ -285,17 +296,23 @@ int main()
                 war.AddCard(P1.turn());
                 war.AddCard(P1.turn());
                 war.AddCard(P1.turn());
-
+                
                 wCard1=P1.turn();
-		war.AddCard(wCard1);
+                war.AddCard(wCard1);
                 
                 war.AddCard(P2Card);
                 war.AddCard(P2.turn());
                 war.AddCard(P2.turn());
                 war.AddCard(P2.turn());
                 
-		wCard2=P2.turn();
-		war.AddCard(wCard2);
+                wCard2=P2.turn();
+                
+                if(wCard1 == wCard2)
+                {
+                    warCheck = true;
+                }
+                
+                war.AddCard(wCard2);
                 
                 addCount=0;
                 int addme;
@@ -303,34 +320,39 @@ int main()
                 cout << "WCARD2 IS " << wCard2 << "\n";
 				if (wCard1 > wCard2)
 				{
-                    		cout << "P1 wins war" << "\n";
-                    			while (addCount<=warCount)
-		   			{
-                        
-		   			addme=war.turn();
-		   			P1.AddCardEnd(addme);
-		  			 cout << "I ADDED " << addme << "\n";	
-		   			addCount++;
-		   			 }
-                  		}
+                    cout << "P1 wins war" << "\n";
+                    while (war.check())
+                    {
+                        addme=war.turn();
+                        P1.AddCardEnd(addme);
+                        cout << "I ADDED " << addme << "\n";
+                        addCount++;
+                        cout<<P2.CountCards();
+                    }
+                }
 				if (wCard1 < wCard2)
 				{
                     cout << "P2 wins war" << "\n";
-					while (warCount<11)
+					while (war.check())
 					{
-					addme=war.turn();
-		   			P2.AddCardEnd(addme);
-		   			cout << "I ADDED " << addme << "\n";	
-		  			 addCount++;
+                        addme=war.turn();
+                        P2.AddCardEnd(addme);
+                        cout << "I ADDED " << addme << "\n";
+                        addCount++;
+                        cout<<P2.CountCards();
 					}
                     
 				}
-                }while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
+            }while (warCheck);//repeats war while the cards turned last in both hands equal each other
 		}
         p1count=P1.CountCards();
         p2count = P2.CountCards();
+        if(p1count == 52 || p2count == 52)
+        {
+            playCont = false;
+        }
         warCount=0;addCount=0;
-	} while (p1count<52 && p2count<52);
+	} while (playCont);
     
 	return 0;
 }
