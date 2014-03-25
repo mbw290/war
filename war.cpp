@@ -146,6 +146,9 @@ public:
 		}
 		//The item after the last item will be our new item
 		lastItem->Next = newNode;
+<<<<<<< HEAD
+		newNode->Next=NULL;
+=======
 	}
     
     
@@ -153,6 +156,7 @@ public:
 	{
 		delete First->pHand;;
 		First = First->Next;
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 	}
     
 	//Remove the entire linked list
@@ -175,6 +179,9 @@ public:
 		//delete current->pHand;
 		delete current;
 	}
+<<<<<<< HEAD
+
+=======
     
 	int Display()
 	{
@@ -188,6 +195,7 @@ public:
         return 0;
 	}
     
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 	int CountCards()
 	{
         Link *current = First;
@@ -199,29 +207,45 @@ public:
         }
         return counter;
 	}
+	int val;
 	int turn()
-	{
-		int val;
-		Link *current = First;
-		val = current->pHand->value;
-		//First = First->Next;
-		return val;
-	}
+    	{
+        val = First->pHand->value; // store value to return
+        Link *temp = First; // remove card from deck
+        if(First == Last)
+        {
+            First = NULL;
+            Last = NULL;
+        }
+        else
+            First = First->Next;
+        delete temp;
+        return val; //card goes into play
+    }
 };
 
 int main()
 {
     //Setup a deck object to hold the shuffled array and two linkedlist for a players hand
 	Link *First= new Link;
+<<<<<<< HEAD
+	Link *current=First;
+=======
 	Link *Current=First;
     LinkedList war;
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 	Deck nDeck;
-	int z=0;
+	int warCount=0;
 	LinkedList P1;
 	LinkedList P2;
+<<<<<<< HEAD
+	LinkedList war;
+//Fill in the deck then shuffle it
+=======
 	int x;
 	int counter = 0;
     //Fill in the deck then shuffle it
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 	nDeck.fillDeck();
 	nDeck.shuffleDeck();
 	//nDeck.printDeck();
@@ -240,7 +264,6 @@ int main()
 	}
 	cout << "-----Player1-----" << endl;
 	cout << "-----Player2-----" << endl;
-	cout << "-------------------------" << endl;
 	int P1Card, P2Card, wCard1, wCard2;//holds the value of the turn
 	int wCount = 0;
 	do
@@ -255,25 +278,67 @@ int main()
 		cout << endl << "P2 card : ";
 		P2Card = P2.turn();
 		cout << P2Card;
+		int count=0;
+		if (P1Card==0){count=P1.CountCards(); cout << "count is " << count << "\n"; return 0;}
+		if (P2Card==0){count=P2.CountCards(); cout << "count is " << count << "\n"; return 0;}	
 		cout << endl;
 		//these ifs compare the value of the cards turned
 		if (P1Card > P2Card)
 		{
 			cout << "Player1 wins this round!";
-			P1.RemoveCard();
 			P1.AddCardEnd(P1Card);
 			P1.AddCardEnd(P2Card);
+<<<<<<< HEAD
+			cout << "Player 1 now has ";
+=======
 			P2.RemoveCard();
 			//cout << "Player 1 now has ";
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 		}
 		else if (P2Card > P1Card)
 		{
 			cout << "Player2 wins this round!";
-			P2.RemoveCard();
 			P2.AddCardEnd(P2Card);
 			P2.AddCardEnd(P1Card);
-			P1.RemoveCard();
 		}
+<<<<<<< HEAD
+		do
+		{
+		if (P1Card == P2Card)
+		{
+			cout << "WAR" << "\n";
+
+
+			war.AddCard(P1Card);
+			war.AddCard(P1.turn());
+			war.AddCard(P1.turn());
+			war.AddCard(P1.turn());
+			wCard1=P1.turn();
+			war.AddCard(wCard1);
+
+			war.AddCard(P2Card);
+			war.AddCard(P2.turn());
+			war.AddCard(P2.turn());
+			war.AddCard(P2.turn());
+			war.AddCard(P2.turn());
+
+			wCard2=P2.turn();
+			war.AddCard(wCard2);
+
+			
+			warCount=warCount+10;
+			int addme;
+			cout << "WCARD1 IS " << wCard1 << "\n";
+			cout << "WCARD2 IS " << wCard2 << "\n";
+			int addWar=0;
+
+				if (wCard1 > wCard2)
+				{
+				cout << "P1 wins war" << "\n";
+					 while (addWar<=warCount)
+					
+					{
+=======
 		
         
             if (P1Card == P2Card)
@@ -320,12 +385,20 @@ int main()
                         
 					{
                         
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 						addme=war.turn();
 						P1.AddCardEnd(addme);
 						cout << "I ADDED " << addme << "\n";
-						war.RemoveCard();	
-						warCount++;
+						addWar++;
 					}
+<<<<<<< HEAD
+						
+				}
+				if (wCard1 < wCard2)
+				{
+				cout << "P2 wins war" << "\n";
+					while (addWar<=warCount)
+=======
                     
                     war.RemoveList(war);	
 				}
@@ -333,20 +406,32 @@ int main()
 				{
                     cout << "P2 wins war" << "\n";
 					while (warCount<11)
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 					{
 						addme=war.turn();
 						P1.AddCardEnd(addme);
 						cout << "I ADDED " << addme << "\n";
-						war.RemoveCard();
-						warCount++;
+						addWar++;
 					}
+<<<<<<< HEAD
+				
+=======
                     war.RemoveList(war);	
                     
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 				}
                 }while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
 		}
+<<<<<<< HEAD
+		} while (wCard1 == wCard2);//repeats war while the cards turned last in both hands equal each other
+	
+                 p1count=P1.CountCards();
+                 p2count = P2.CountCards();
+		warCount=0;
+=======
         p1count=P1.CountCards();
         p2count = P2.CountCards();
+>>>>>>> a2b6b9d244f0d603fa9b1c8b41c4760755eb6b58
 	} while (p1count<52 && p2count<52);
     
 	return 0;
