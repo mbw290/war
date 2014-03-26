@@ -359,9 +359,9 @@ int main()
                 		    {
 		                    addme=war.turn();
                 		    P1.AddCardEnd(addme);
-				    cout << "PLAYER 1 " << P1.CountCards() << "\n";
 		                    addCount++;
                     		    }
+				warCheck=false;
                 		}
 				if (wCard1 < wCard2)
 				{
@@ -373,9 +373,9 @@ int main()
 					{
                         		addme=war.turn();
 		                        P2.AddCardEnd(addme);
-					cout << "PLAYER 2 " << P2.CountCards() << "\n";
                 		        addCount++;
 					}
+				warCheck=false;
                     
 				}
             }while (warCheck);//repeats war while the cards turned last in both hands equal each other
@@ -387,11 +387,11 @@ int main()
             	playCont = false;
         	}
 
-		if (p1count == 52)
+		if (p2count == 0)
 		{
 		cout << "PLAYER ONE WINS GAME!\n";
 		}
-		if (p2count == 52)
+		if (p1count == 0)
 		{
 		cout << "PLAYER TWO WINS GAME!\n";
 		}
