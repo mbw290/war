@@ -264,10 +264,40 @@ int main()
 		cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
 		cout << "P1 card: ";
 		P1Card = P1.turn();
-		cout << P1Card << "\n";
+		switch (P1Card)
+			{
+                case 11:
+                    cout << "J" << endl;
+                    break;
+                case 12:
+                    cout << "Q" << endl;
+                    break;
+                case 13:
+                    cout << "K" << endl;
+                    break;
+                case 14:
+                    cout << "A" << endl;
+                    break;
+                default: cout << P1Card << endl;
+			}
 		cout << endl << "P2 card : ";
 		P2Card = P2.turn();
-		cout << P2Card << "\n";
+		switch (P2Card)
+			{
+                case 11:
+                    cout << "J" << endl;
+                    break;
+                case 12:
+                    cout << "Q" << endl;
+                    break;
+                case 13:
+                    cout << "K" << endl;
+                    break;
+                case 14:
+                    cout << "A" << endl;
+                    break;
+                default: cout << P2Card << endl;
+			}
 		cout << endl;
 		//these ifs compare the value of the cards turned
 		if (P1Card > P2Card)
@@ -348,8 +378,40 @@ int main()
                 
                 addCount=0;
                 int addme;
-                cout << "WAR CARD 1 IS " << wCard1 << "\n";
-                cout << "WAR CARD 2 IS " << wCard2 << "\n";
+                cout << "WAR CARD 1 IS ";
+		switch (wCard1)
+			{
+                case 11:
+                    cout << "J" << endl;
+                    break;
+                case 12:
+                    cout << "Q" << endl;
+                    break;
+                case 13:
+                    cout << "K" << endl;
+                    break;
+                case 14:
+                    cout << "A" << endl;
+                    break;
+                default: cout << wCard1 << endl;
+			}
+                cout << "WAR CARD 2 IS ";
+			switch (wCard2)
+			{
+                case 11:
+                    cout << "J" << endl;
+                    break;
+                case 12:
+                    cout << "Q" << endl;
+                    break;
+                case 13:
+                    cout << "K" << endl;
+                    break;
+                case 14:
+                    cout << "A" << endl;
+                    break;
+                default: cout << wCard2 << endl;
+			}
 				if (wCard1 > wCard2)
 				{
                     		    cout << "P1 wins war" << "\n";
