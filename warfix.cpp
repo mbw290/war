@@ -264,8 +264,8 @@ int main()
     bool playCont = true;
 	do
 	{	
-        	cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
-		cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
+        	//cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
+		//cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
 		cout << "P1 card: ";
 		P1Card = P1.turn();
 		switch (P1Card)
@@ -306,10 +306,9 @@ int main()
 		//these ifs compare the value of the cards turned
 		if (P1Card > P2Card)
 		{
-			cout << "Player1 wins this round!";
+			cout << "Player1 wins this round!"<<"\n";
 			P1.AddCardEnd(P1Card);
 			P1.AddCardEnd(P2Card);
-			//cout << "Player 1 now has ";
 		}
 		if (P1.CountCards()==1)
 		{
@@ -318,7 +317,7 @@ int main()
 		}
 		if (P2Card > P1Card)
 		{
-			cout << "Player2 wins this round!";
+			cout << "Player2 wins this round!"<<"\n";
 			P2.AddCardEnd(P2Card);
 			P2.AddCardEnd(P1Card);
 		}
@@ -334,7 +333,7 @@ int main()
             		do
             		{
                 	cout << "WAR" << "\n";
-                		if(P1.CountCards() < 5)
+                		if(P1.CountCards() <= 5)
                 		{
 					while(P1.CountCards()!=1)
 					{
@@ -349,7 +348,7 @@ int main()
                		 	wCard2=P2.turn();
 				war.AddCard(wCard2);
 				}
-	                	if(P2.CountCards() < 5)
+	                	if(P2.CountCards() <= 5)
         	        	{
 					while(P2.CountCards()!=1)
 					{
@@ -430,7 +429,6 @@ int main()
 				{
                     		    cout << "P1 wins war" << "\n";
 				    count1=war.CountCards();
-				    cout << "WAR HAS " << count1 << "\n";
 		                    while (addCount<count1)
                 		    {
 		                    addme=war.turn();
@@ -442,9 +440,7 @@ int main()
 				if (wCard1 < wCard2)
 				{
                     		cout << "P2 wins war" << "\n";
-			
 				count1=war.CountCards();
-				cout << "WAR HAS " << count1 << "\n";
 				while (addCount<count1)
 					{
                         		addme=war.turn();
@@ -463,14 +459,14 @@ int main()
             	playCont = false;
         	}
 
-		if (p2count >= 52)
+		if (p2count >= 51)
 		{
-		cout << "PLAYER TWO WINS GAME!\n";
+		cout << "PLAYER TWO HAS ALL THE CARDS AND WINS THE GAME!\n";
 		return 0;
 		}
-		if (p1count >= 52)
+		if (p1count >= 51)
 		{
-		cout << "PLAYER ONE WINS GAME!\n";
+		cout << "PLAYER ONE HAS ALL THE CARDS AND WINS THE GAME!\n";
 		return 0;
 		}
         warCount=0;addCount=0;
