@@ -145,6 +145,7 @@ public:
 			lastItem = lastItem->Next;
 		}
 		//The item after the last item will be our new item
+		nHand->value=cValue;
 		lastItem->Next = newNode;
 		newNode->Next=NULL;
 	}
