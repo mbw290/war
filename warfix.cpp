@@ -264,8 +264,8 @@ int main()
     bool playCont = true;
 	do
 	{	
-        	//cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
-		//cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
+        	cout <<"PLAYER ONE SCORE IS  " << p1count << "\n";
+		cout <<"PLAYER TWO SCORE IS  " << p2count << "\n";
 		cout << "P1 card: ";
 		P1Card = P1.turn();
 		switch (P1Card)
