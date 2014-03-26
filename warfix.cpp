@@ -231,6 +231,7 @@ int main()
 	LinkedList P1;
 	LinkedList P2;
 	int counter = 0;
+	int count1=0;
 	int addCount;
   	int warCount=1;
     //Fill in the deck then shuffle it
@@ -297,6 +298,12 @@ int main()
 					}
 				wCard1=P1.turn();
 				war.AddCard(wCard1);
+				war.AddCard(P2Card);
+               			 war.AddCard(P2.turn());
+                		war.AddCard(P2.turn());
+                		war.AddCard(P2.turn());
+               		 	wCard2=P2.turn();
+				war.AddCard(wCard2);
 				}
 	                	if(P2.CountCards() < 5)
         	        	{
@@ -306,6 +313,13 @@ int main()
 					}
 				wCard2=P2.turn();
 				war.AddCard(wCard2);
+				war.AddCard(P1Card);
+               			war.AddCard(P1.turn());
+                		war.AddCard(P1.turn());
+                		war.AddCard(P1.turn());
+
+				wCard1=P1.turn();
+				war.AddCard(wCard1);
 				
            			}
 				        	
@@ -334,26 +348,32 @@ int main()
                 
                 addCount=0;
                 int addme;
-		
                 cout << "WAR CARD 1 IS " << wCard1 << "\n";
                 cout << "WAR CARD 2 IS " << wCard2 << "\n";
 				if (wCard1 > wCard2)
 				{
                     		    cout << "P1 wins war" << "\n";
-		                    while (addCount<war.CountCards())
+				    count1=war.CountCards();
+				    cout << "WAR HAS " << count1 << "\n";
+		                    while (addCount<count1)
                 		    {
 		                    addme=war.turn();
                 		    P1.AddCardEnd(addme);
+				    cout << "PLAYER 1 " << P1.CountCards() << "\n";
 		                    addCount++;
                     		    }
                 		}
 				if (wCard1 < wCard2)
 				{
                     		cout << "P2 wins war" << "\n";
-					while (addCount<war.CountCards())
+			
+				count1=war.CountCards();
+				cout << "WAR HAS " << count1 << "\n";
+				while (addCount<count1)
 					{
                         		addme=war.turn();
 		                        P2.AddCardEnd(addme);
+					cout << "PLAYER 2 " << P2.CountCards() << "\n";
                 		        addCount++;
 					}
                     
