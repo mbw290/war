@@ -291,44 +291,56 @@ int main()
                 	cout << "WAR" << "\n";
                 		if(P1.CountCards() < 5)
                 		{
-			cout << "PLAYER 2 WINS GAME!\n";
-			return 0;
-           			}
+					while(P1.CountCards()!=1)
+					{
+					war.AddCard(P1.turn());
+					}
+				wCard1=P1.turn();
+				war.AddCard(wCard1);
+				}
 	                	if(P2.CountCards() < 5)
         	        	{
-				cout << "PLAYER 1 WINS GAME!\n";
-				return 0;
-                		}
+					while(P2.CountCards()!=1)
+					{
+					war.AddCard(P2.turn());
+					}
+				wCard2=P2.turn();
+				war.AddCard(wCard2);
+				
+           			}
+				        	
+		else
+		{
                 war.AddCard(P1Card);
                 war.AddCard(P1.turn());
                 war.AddCard(P1.turn());
                 war.AddCard(P1.turn());
-                
-                wCard1=P1.turn();
-                war.AddCard(wCard1);
-                
+
+		wCard1=P1.turn();
+		war.AddCard(wCard1);
+		
                 war.AddCard(P2Card);
                 war.AddCard(P2.turn());
                 war.AddCard(P2.turn());
                 war.AddCard(P2.turn());
-                
                 wCard2=P2.turn();
-                
+		war.AddCard(wCard2);
+            	}    
                 	if(wCard1 == wCard2)
 	                {
         	            warCheck = true;
                 	}
                 
-                war.AddCard(wCard2);
                 
                 addCount=0;
                 int addme;
+		
                 cout << "WAR CARD 1 IS " << wCard1 << "\n";
                 cout << "WAR CARD 2 IS " << wCard2 << "\n";
 				if (wCard1 > wCard2)
 				{
-                    		cout << "P1 wins war" << "\n";
-		                    while (war.check())
+                    		    cout << "P1 wins war" << "\n";
+		                    while (addCount<war.CountCards())
                 		    {
 		                    addme=war.turn();
                 		    P1.AddCardEnd(addme);
@@ -338,7 +350,7 @@ int main()
 				if (wCard1 < wCard2)
 				{
                     		cout << "P2 wins war" << "\n";
-					while (war.check())
+					while (addCount<war.CountCards())
 					{
                         		addme=war.turn();
 		                        P2.AddCardEnd(addme);
