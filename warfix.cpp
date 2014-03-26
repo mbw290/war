@@ -131,6 +131,10 @@ public:
     //Add a card at the end or in this case the bottom of the pile so that it's not used by the player in the next hand after a winning one
 	void AddCardEnd(int cValue)
 	{
+		if (First==NULL)
+		{
+		AddCard(cValue);
+		}
 		//We setup two pointers to Link objects
 		Link *lastItem = new Link;
 		Link *newNode = new Link;
@@ -307,13 +311,23 @@ int main()
 			P1.AddCardEnd(P2Card);
 			//cout << "Player 1 now has ";
 		}
-		else if (P2Card > P1Card)
+		if (P1.CountCards()==1)
+		{
+			P1.AddCard(P1Card);
+			P1.AddCard(P2Card);
+		}
+		if (P2Card > P1Card)
 		{
 			cout << "Player2 wins this round!";
 			P2.AddCardEnd(P2Card);
 			P2.AddCardEnd(P1Card);
 		}
-        
+
+		if (P2.CountCards()==1)
+		{
+			P2.AddCard(P1Card);
+			P2.AddCard(P2Card);
+		}
         
         	if (P1Card == P2Card)
         	{
@@ -449,13 +463,15 @@ int main()
             	playCont = false;
         	}
 
-		if (p2count == 0)
-		{
-		cout << "PLAYER ONE WINS GAME!\n";
-		}
-		if (p1count == 0)
+		if (p2count >= 52)
 		{
 		cout << "PLAYER TWO WINS GAME!\n";
+		return 0;
+		}
+		if (p1count >= 52)
+		{
+		cout << "PLAYER ONE WINS GAME!\n";
+		return 0;
 		}
         warCount=0;addCount=0;
 } while (playCont);
